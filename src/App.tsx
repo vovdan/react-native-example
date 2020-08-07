@@ -1,8 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import Page1 from './Page1';
 import Page2 from './Page2';
+import { addCount } from './actions';
+import Counter from './Counter';
+import { bindActionCreators } from 'redux';
 
 class App extends Component {
   state = {
@@ -13,15 +16,18 @@ class App extends Component {
     this.setState({
       isFirstComponent: !this.state.isFirstComponent
     });
-    console.log('clicked1', this.state.isFirstComponent);
+    this.props.reduxIncreaseCounter()
   }
 
   render() {
     return (
+
       <View>
-        {this.state.isFirstComponent ? <Page1 onPress={this.onPress.bind(this)} /> : null}
-        {!this.state.isFirstComponent ? <Page2 onPress={this.onPress.bind(this)} /> : null}
+        <Counter count={this.props.count}/>
+        {this.state.isFirstComponent && <Page1 onPress={this.onPress.bind(this)} />}
+        {!this.state.isFirstComponent && <Page2 onPress={this.onPress.bind(this)} />}
       </View>
+
     );
   }
 }
@@ -37,4 +43,16 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    count: state.count
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    reduxIncreaseCounter: () => dispatch(addCount()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
