@@ -5,7 +5,7 @@ import Page1 from './Page1';
 import Page2 from './Page2';
 import { addCount } from './actions';
 import Counter from './Counter';
-import { bindActionCreators } from 'redux';
+import { countSelector } from './selectors';
 
 class App extends Component {
   state = {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   return {
-    count: state.count
+    count: countSelector(state)
   };
 }
 
