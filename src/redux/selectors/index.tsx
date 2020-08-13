@@ -13,3 +13,7 @@ export function navScreenSelector(state) {
 export function currentUserSelector(state) {
   return state.userInf;
 }
+
+export function memesUrlSelector(state) {
+  return state.memes;
+}

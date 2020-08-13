@@ -10,6 +10,8 @@ import LogInForm from './screens/LogInForm';
 import LogOut from './components/LogOut';
 import { types } from './redux';
 import UserInfButton from './components/UserInfButton';
+import MemesButton from './components/MemesButton';
+import Memes from './screens/Memes';
 
 class App extends Component {
 
@@ -24,6 +26,7 @@ class App extends Component {
           {this.props.currentSreen === types.Page1 && <Page1 />}
           {this.props.currentSreen === types.Page2 && <Page2 />}
           {this.props.currentSreen === types.UserInf && <UserInf />}
+          {this.props.currentSreen === types.Memes && <Memes />}
         </ScrollView>
         {this.props.isLogged &&
           <View
@@ -31,6 +34,7 @@ class App extends Component {
           >
             <LogOut />
             <UserInfButton />
+            <MemesButton />
           </View>}
       </View>
     );
