@@ -1,0 +1,16 @@
+export enum types {
+  ADD_COUNT = 'ADD_COUNT',
+  LOGIN_REQUEST = 'LOGIN_REQUEST',
+  LOGOUT = 'LOGOUT',
+  LOGIN_SUCCESS = 'LOGIN_SUCCESS',
+  LOGIN_ERROR = 'LOGIN_ERROR',
+  LOGIN_CANCELLED = 'LOGIN_CANCELLED',
+  SHOW_ALERT = 'SHOW_ALERT',
+  HIDE_ALERT = 'HIDE_ALERT',
+  GO_TO = 'GO_TO',
+  Login = 'Login',
+  Page1 = 'Page1',
+  Page2 = 'Page2',
+  UserInf = 'UserInf',
+  TAKE_CURRENT_USER = 'TAKE_CURRENT_USER'
+}

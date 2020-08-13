@@ -1,36 +1,47 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import Page1 from './Page1';
-import Page2 from './Page2';
-import { addCount } from './actions';
-import Counter from './Counter';
-import { countSelector } from './selectors';
+import { StyleSheet, View } from 'react-native';
+import Page1 from './screens/Page1';
+import Page2 from './screens/Page2';
+import UserInf from './screens/UserInfo';
+import Counter from './screens/Counter';
+import { countSelector, isLoggedSelector, navScreenSelector } from './redux';
+import LogInForm from './screens/LogInForm';
+import LogOut from './screens/LogOut';
+import { types } from './redux';
+import UserInfButton from './screens/UserInfButton';
 
 class App extends Component {
-  state = {
-    isFirstComponent: true
-  }
-
-  onPress = () => {
-    this.setState({
-      isFirstComponent: !this.state.isFirstComponent
-    });
-    this.props.reduxIncreaseCounter()
-  }
 
   render() {
     return (
 
       <View>
-        <Counter count={this.props.count}/>
-        {this.state.isFirstComponent && <Page1 onPress={this.onPress.bind(this)} />}
-        {!this.state.isFirstComponent && <Page2 onPress={this.onPress.bind(this)} />}
+        {this.props.isLogged &&
+          <View >
+            <LogOut />
+            <UserInfButton />
+          </View>}
+        {this.props.currentSreen === types.Login && <LogInForm style={styles.form} />}
+        {this.props.isLogged && <Counter count={this.props.count} />}
+        {this.props.currentSreen === types.Page1 && <Page1 />}
+        {this.props.currentSreen === types.Page2 && <Page2 />}
+        {this.props.currentSreen === types.UserInf && <UserInf />}
       </View>
 
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    count: countSelector(state),
+    isLogged: isLoggedSelector(state),
+    currentSreen: navScreenSelector(state)
+  };
+}
+
+export default connect(mapStateToProps, null)(App);
 
 const styles = StyleSheet.create({
   container: {
@@ -42,17 +53,3 @@ const styles = StyleSheet.create({
     marginBottom: 16
   }
 });
-
-function mapStateToProps(state) {
-  return {
-    count: countSelector(state)
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    reduxIncreaseCounter: () => dispatch(addCount()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
