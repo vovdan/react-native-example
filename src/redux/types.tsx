@@ -12,5 +12,6 @@ export enum types {
   Page1 = 'Page1',
   Page2 = 'Page2',
   UserInf = 'UserInf',
-  TAKE_CURRENT_USER = 'TAKE_CURRENT_USER'
+  TAKE_CURRENT_USER = 'TAKE_CURRENT_USER',
+  Memes = 'Memes'
 }

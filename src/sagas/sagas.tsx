@@ -34,7 +34,6 @@ export function fakeAuthorize(username, password) {
 
 function* sagaWorker(action) {
   const result = yield call(fakeAuthorize, action.username, action.password);
-  console.log(result);
   if (result.length) {
     yield put({ type: types.LOGIN_SUCCESS });
     yield put({ type: types.GO_TO, screenName: types.Page1 });
