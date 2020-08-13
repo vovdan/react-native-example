@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { types } from '../redux';
 import { addCount, goTo } from '../redux';
 import { connect } from 'react-redux';
+import { StyledTouchableOpacity, StyledContainer } from '../styles';
 
 class Page1 extends Component {
 
@@ -13,14 +14,16 @@ class Page1 extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.onPress(types.Page2)}
-        >
-          <Text>Press Here1</Text>
-        </TouchableOpacity>
-      </View>
+      
+        <StyledContainer>
+          <StyledTouchableOpacity
+            backgroundColor='#ff00ff'
+            onPress={() => this.onPress(types.Page2)}
+          >
+            <Text>Press Here1</Text>
+          </StyledTouchableOpacity>
+        </StyledContainer>
+      
     );
   }
 }
@@ -33,16 +36,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(null, mapDispatchToProps)(Page1);
-
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%'
-  },
-  button: {
-    backgroundColor: "#ff00ff",
-    padding: 10
-  }
-});

@@ -25,9 +25,10 @@ class LogInForm extends Component<{}> {
       [key]: value
     })
   }
+
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <TextInput
           placeholder="User Name"
           value={this.state.username}
@@ -73,6 +74,12 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(null, mapDispatchToProps)(LogInForm)
 
 const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   input: {
     borderBottomWidth: 1,
     width: 255,

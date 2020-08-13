@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { logOut, goTo, types } from '../redux';
 import { connect } from 'react-redux';
+import { StyledContainer, StyledTouchableOpacity } from '../styles';
 
 class LogOut extends Component {
 
@@ -15,11 +16,14 @@ class LogOut extends Component {
 
   render() {
     return (
-      <TouchableOpacity
-        style={styles.button}
-        onPress={this.logOut}>
-        <Text>Log Out</Text>
-      </TouchableOpacity>
+      <StyledContainer>
+        <StyledTouchableOpacity
+          //style={styles.button}
+          backgroundColor='#00bfff'
+          onPress={this.logOut}>
+          <Text>Log Out</Text>
+        </StyledTouchableOpacity>
+      </StyledContainer>
     );
   }
 }
@@ -31,14 +35,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(null, mapDispatchToProps)(LogOut)
-
-const styles = StyleSheet.create({
-  button: {
-    width: '20%',
-    alignItems: "center",
-    backgroundColor: "#00bfff",
-    padding: 10,
-    marginRight: 0,
-    marginLeft: 'auto'
-  }
-});
