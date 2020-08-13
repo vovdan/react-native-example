@@ -15,7 +15,7 @@ class Page1 extends Component {
         >
           <Text>Press Here1</Text>
         </TouchableOpacity>
-      </View >
+      </View>
     );
   }
 }
@@ -25,8 +25,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100%',
-    backgroundColor: 'black'
+    height: '100%'
   },
   button: {
     backgroundColor: "#ff00ff",

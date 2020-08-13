@@ -14,7 +14,7 @@ class Page2 extends Component {
           onPress={this.props.onPress}
         >
           <Text>Press Here2</Text>
-        </TouchableOpacity >
+        </TouchableOpacity>
       </View>
     );
   }
